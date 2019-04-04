@@ -7,6 +7,7 @@ class ProductDisp extends Component {
     return (
       <div style={{ marginTop: "1%" }}>
         <Container>
+          
           <h3 style={{textAlign:"center"}}>Hi {this.props.location.state.data.name} !,   You can find the detail of the product searched</h3>
           <br/>
           <Row className="justify-content-center">
