@@ -32,7 +32,7 @@ class App extends Component {
             <Col lg="8">
               <Jumbotron>
                 <h3>
-                  Welcome to iSmart Instore Shopping
+                  Welcome to iSmart Shopping
                 </h3>
                 <hr />
                 <Card>

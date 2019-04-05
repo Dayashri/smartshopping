@@ -7,7 +7,7 @@ class AppNavbar extends Component {
     return (
       <div>
         <Navbar expand="sm" className="mb-3" style={{'background':'#3f51b5'}}>
-            <NavbarBrand className="brand" style={{'color':'#fff',fontSize:"28px"}}>iSmart Instore Shopping</NavbarBrand>
+            <NavbarBrand className="brand" style={{'color':'#fff',fontSize:"28px"}}>iSmart Shopping</NavbarBrand>
         </Navbar>
       </div>
     );
