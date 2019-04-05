@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Camera from 'react-html5-camera-photo';
 import { Button } from 'reactstrap';
 import 'react-html5-camera-photo/build/css/index.css';
+import './sliderItem.css';
 import imageData from '../imageData';
+import sampleImage from '../smartShopLogo.png';
 
 class CaptureImage extends Component {
     constructor(props) {
@@ -20,10 +22,11 @@ class CaptureImage extends Component {
             state: {
                 name: this.state.customerid,
                 data: {
+                    "msg":"",
                     "id": 1234,
                     "modelId": 'a123',
                     'productName':'Bag',
-                    "imgurl":dataUri,
+                    "imgurl":{sampleImage},
                     "Availability":"yes",
                     "color":"pink",
                     "price":121,
@@ -33,17 +36,17 @@ class CaptureImage extends Component {
                         {
                             'productName': 'Bag', 'color': 'brown',
                             'size': 'medium', 'Brand': 'Kennith hole', 'Availability': 'yes', 'Inventory': 'Rack A4',
-                            'imgurl': 'url1', 'onlinelink': 'link1', 'price': '45'
+                            'imgurl': imageData.image1, 'onlinelink': 'link1', 'price': '45'
                         },
                         {
                             'productName': 'Bag', 'color': 'large',
                             'size': 'yellow', 'Brand': 'Kennith hole', 'Availability': 'yes',
-                            'Inventory': 'Rack A3', 'imgurl': 'url1', 'onlinelink': 'link1', 'price': '75'
+                            'Inventory': 'Rack A3', 'imgurl': imageData.image1, 'onlinelink': 'link1', 'price': '75'
                         },
 
                         {
                             'productName': 'Bag', 'color': 'red', 'size': 'small', 'Brand': 'Kennith hole', 'Availability': 'yes',
-                            'Inventory': 'Rack B4', 'imgurl': 'url1', 'onlinelink': 'link1', 'price': '35'
+                            'Inventory': 'Rack B4', 'imgurl': imageData.image1, 'onlinelink': 'link1', 'price': '35'
                         }],
                     "Recommended items": [
                         {
@@ -62,31 +65,57 @@ class CaptureImage extends Component {
             state: {
                 name: this.state.customerid,
                 data: {
+                    "msg":"",
                     "id": 1234,
                     "modelId": 'a123',
                     'productName':'Bag',
-                    "imgurl":imageData.image1,
+                    "imgurl":{sampleImage},
+                    "Availability":"yes",
+                    "color":"pink",
+                    "price":121,
+                    "Inventory":"Rack2",
+                    "onlinelink":"https:google.com/",
                     "similarItems": [
                         {
                             'productName': 'Bag', 'color': 'brown',
                             'size': 'medium', 'Brand': 'Kennith hole', 'Availability': 'yes', 'Inventory': 'Rack A4',
-                            'imgurl': 'url1', 'onlinelink': 'link1', 'price': '45'
+                            'imgurl': imageData.image1, 'onlinelink': 'link1', 'price': '45'
                         },
                         {
                             'productName': 'Bag', 'color': 'large',
                             'size': 'yellow', 'Brand': 'Kennith hole', 'Availability': 'yes',
-                            'Inventory': 'Rack A3', 'imgurl': 'url1', 'onlinelink': 'link1', 'price': '75'
+                            'Inventory': 'Rack A3', 'imgurl': imageData.image1, 'onlinelink': 'link1', 'price': '75'
                         },
 
                         {
                             'productName': 'Bag', 'color': 'red', 'size': 'small', 'Brand': 'Kennith hole', 'Availability': 'yes',
-                            'Inventory': 'Rack B4', 'imgurl': 'url1', 'onlinelink': 'link1', 'price': '35'
+                            'Inventory': 'Rack B4', 'imgurl': imageData.image1, 'onlinelink': 'link1', 'price': '35'
                         }],
-                    "Recommended items": [
+                    "recommendedItems": [
                         {
                             'productName': 'Travel Bag', 'color': 'Blue', 'size': 'medium',
                             'Brand': 'American tourister', 'Availability': 'yes', 'Inventory': 'Rack F2',
-                            'imgurl': 'url1', 'onlinelink': 'link1', 'price': '245'
+                            'imgurl': imageData.image1, 'onlinelink': 'link1', 'price': '245'
+                        },
+                        {
+                            'productName': 'Travel Bag', 'color': 'Blue', 'size': 'medium',
+                            'Brand': 'American tourister', 'Availability': 'yes', 'Inventory': 'Rack F2',
+                            'imgurl': imageData.image1, 'onlinelink': 'link1', 'price': '245'
+                        },
+                        {
+                            'productName': 'Travel Bag', 'color': 'Blue', 'size': 'medium',
+                            'Brand': 'American tourister', 'Availability': 'yes', 'Inventory': 'Rack F2',
+                            'imgurl': imageData.image1, 'onlinelink': 'link1', 'price': '245'
+                        },
+                        {
+                            'productName': 'Travel Bag', 'color': 'Blue', 'size': 'medium',
+                            'Brand': 'American tourister', 'Availability': 'yes', 'Inventory': 'Rack F2',
+                            'imgurl': imageData.image1, 'onlinelink': 'link1', 'price': '245'
+                        },
+                        {
+                            'productName': 'Travel Bag', 'color': 'Blue', 'size': 'medium',
+                            'Brand': 'American tourister', 'Availability': 'yes', 'Inventory': 'Rack F2',
+                            'imgurl': imageData.image1, 'onlinelink': 'link1', 'price': '245'
                         }
                     ]
                 }
@@ -104,6 +133,7 @@ class CaptureImage extends Component {
 
     render() {
         return (
+            <React.Fragment>
             <div style={{ textAlign: "center", margin: "10%" }}>
                 <h3>Hi {this.props.location.state.name}!.</h3>
                 <h5>Start your Smart Search</h5>
@@ -120,6 +150,7 @@ class CaptureImage extends Component {
                     <Button color="info" onClick={(e) => this.showCameraModule(e)}>Capture Your Product</Button>
                 )}
             </div>
+            </React.Fragment>
         );
     }
 }
