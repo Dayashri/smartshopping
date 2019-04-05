@@ -13,7 +13,9 @@ class ProductDisp extends Component {
   }
 
   onOpenModal = () => {
-    this.setState({ openLocationModal: true });
+    this.setState({ openLocationModal: true },()=>{
+      setTimeout(this.onCloseModal, 3000);
+    });
   };
 
   onCloseModal = () => {
@@ -64,7 +66,7 @@ class ProductDisp extends Component {
                               <React.Fragment>
                                 <CardText style={{ color: "green" }}>In Stock{item.Inventory}</CardText>
                                 <CardText>Inventory Detail : {item.Inventory}</CardText>
-                                <CardText>Onlinelink : <CardLink>{item.onlinelink}</CardLink></CardText>
+                                <CardText>Onlinelink : <CardLink>wwww.ismartinstoreshopping.com/product/{this.props.location.state.data.modelid}</CardLink></CardText>
                               </React.Fragment>
                             )}
                             {item.availabilityQty === 0 && (
@@ -97,9 +99,9 @@ class ProductDisp extends Component {
 
             <Slider {...settings}>
               {this.props.location.state.data.recoitems.map((item, index) =>
-                <div key={"similar" + index}>
-                  <Row className="justify-content-center">
-                    <Col xs="6" sm="6" md="6" lg="6" xl="6" key={index} id={"similar" + index}>
+                <div key={"recommended" + index}>
+                  <Row className="justify-content-center" >
+                    <Col xs="6" sm="6" md="6" lg="6" xl="6">
                       <Card body className="text-center" style={{ border: "1px solid white" }}>
                         <CardBody>
                           <br />
@@ -110,7 +112,7 @@ class ProductDisp extends Component {
                         </CardBody>
                       </Card>
                     </Col>
-                    <Col xs="6" sm="6" md="6" lg="6" xl="6" key={index} id={"similar" + index}>
+                    <Col xs="6" sm="6" md="6" lg="6" xl="6">
                       <Card body className="text-center" style={{ border: "1px solid white" }}>
                         <CardImg top
                           src={item.imgurl}

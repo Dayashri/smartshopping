@@ -7,20 +7,18 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      customerid: ''
     }
     this.toCapture = this.toCapture.bind(this);
   }
 
 
   toCapture(customerid) {
-    this.setState({ customerid });
-    this.props.history.push({
-      pathname: '/captureProduct',
-      state: {
-        name: customerid
-      }
-    })
+      this.props.history.push({
+        pathname: '/captureProduct',
+        state: {
+          name: customerid
+        }
+      })
   }
 
   render() {
