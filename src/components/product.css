@@ -10,3 +10,26 @@
 .card-text{
     font-size:18px;
 }
+
+.prodConstainer{
+    border-radius: 1em;
+    border: 2px solid;
+    border-color: #ece2e2;
+}
+
+@media (min-width: 1200px){
+.prodConstainer {
+    width: 80vw;
+}
+}
+
+@media (min-width: 992px) and (max-width: 1999px){
+.prodConstainer {
+    width: 80vw;
+}
+}
+@media (min-width: 768px) and (max-width: 991px){
+.prodConstainer {
+    width: 750px;
+}
+}
