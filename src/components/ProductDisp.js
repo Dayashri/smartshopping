@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody, Container, Row, Col, CardTitle, CardSubtitle, CardLink } from 'reactstrap';
 import Slider from "react-slick";
 import './product.css';
-import sampleImage from '../smartShopLogo.png';
+import imageData from '../imageData';
 
 class ProductDisp extends Component {
   render() {
@@ -27,8 +27,8 @@ class ProductDisp extends Component {
                   <Col xs="12" sm="12" md="5" lg="6" xl="6">
                     <Card body className="text-center" style={{ border: "1px solid white" }}>
                       <CardImg top
-                        // src={this.props.location.state.data.imgurl} 
-                        src={sampleImage}
+                        src={this.props.location.state.data.imgurl} 
+                        className="img-responsive"
                         alt={this.props.location.state.data.productName} />
                     </Card>
                   </Col>
