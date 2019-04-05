@@ -37,7 +37,7 @@ class CaptureImage extends Component {
                 axios.get("http://localhost:8080/modeldetails/" + concepts[0].id).then(resp => {
                     this.props.history.push({
                     pathname: '/product',
-                    state: { data: resp[0]}})
+                    state: { data: resp.data[0]}})
                 });
                 // axios.get("http://localhost:3001/products?modelid=" + concepts[0].id).then(resp => {
                 //     console.log(resp.data);
