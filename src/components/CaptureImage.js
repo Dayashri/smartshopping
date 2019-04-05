@@ -73,8 +73,7 @@ class CaptureImage extends Component {
         return (
             <React.Fragment>
                 <div style={{ textAlign: "center" }}>
-                    <h3>Hi {this.props.location.state.name}!.</h3>
-                    <h5>Start your Smart Search</h5>
+                    <h3>Start your Smart Search</h3>
                     <br />
                     <br />
                     <br />
@@ -83,9 +82,19 @@ class CaptureImage extends Component {
                             onCameraError={(error) => { this.onCameraError(error); }}
                             onTakePhoto={(dataUri) => { this.onTakePhoto(dataUri); }}
                         />
+
                     )}
                     {!this.state.showCamera && (
-                        <Button color="info" onClick={(e) => this.showCameraModule(e)}>Capture Your Product</Button>
+                        <React.Fragment>
+                            <Button color="info" onClick={(e) => this.showCameraModule(e)}>Capture Your Product</Button>
+                            <hr />
+                            <div style={{ color: "blue", marginTop: "10%", fontSize: "18px" }}>How It Works</div>
+                            <br />
+                            Scan the Image from your Mobile/any means in the iSmart App
+<br />
+                            Now! just click <b>Capture Your Product</b><br />
+                            Find the product availablity and where your product is and head to the Aisle to pick it up
+                        </React.Fragment>
                     )}
                 </div>
             </React.Fragment>

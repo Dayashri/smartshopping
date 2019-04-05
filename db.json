@@ -1,10 +1,8 @@
 {
     "products": [
         {
-            "_id": {
-                "$oid": "5ca6467c3fd4bf56e8f9a589"
-            },
-            "modelid": "sbag1",
+            "_id": {"$oid": "5ca6467c3fd4bf56e8f9a589"},
+            "modelid": "bag1",
             "similaritems": [
                 {
                     "productname": "Handbag",
@@ -12,8 +10,11 @@
                     "size": "medium",
                     "Brand": "Gucci",
                     "location": "Rack A4",
+                    "locationurl": "https://s3.amazonaws.com/clarifai-api/img3/prod/large/4c216868e50e425e93ce3d0c724589ab/63568cee53234e4254afe13165c811a2",
+                    "availableQty": 0,
                     "price": 50.0,
-                    "locationurl":"https://s3.amazonaws.com/clarifai-api/img3/prod/large/4c216868e50e425e93ce3d0c724589ab/63568cee53234e4254afe13165c811a2",
+                    "promotion": 5,
+                    "coupons": "SEWRDF",
                     "imgurl": "https://s3.amazonaws.com/clarifai-api/img3/prod/small/4c216868e50e425e93ce3d0c724589ab/09023431a6dde51de90d4cce14652774"
                 },
                 {
@@ -21,9 +22,12 @@
                     "color": "Orange",
                     "size": "medium",
                     "Brand": "Gucci",
-                    "location": "Rack A3",
+                    "location": "Rack A4",
+                    "locationurl": "https://s3.amazonaws.com/clarifai-api/img3/prod/large/4c216868e50e425e93ce3d0c724589ab/63568cee53234e4254afe13165c811a2",
+                    "availableQty": 3,
                     "price": 45.0,
-                    "locationurl":"https://s3.amazonaws.com/clarifai-api/img3/prod/large/4c216868e50e425e93ce3d0c724589ab/63568cee53234e4254afe13165c811a2",
+                    "promotion": 15,
+                    "coupons": "OCTRED",
                     "imgurl": "https://s3.amazonaws.com/clarifai-api/img3/prod/small/4c216868e50e425e93ce3d0c724589ab/72de00c6a94584195952141f48054b8f"
                 },
                 {
@@ -31,9 +35,12 @@
                     "color": "Pink",
                     "size": "medium",
                     "Brand": "Gucci",
-                    "location": "Rack A3",
+                    "location": "Rack A4",
+                    "locationurl": "https://s3.amazonaws.com/clarifai-api/img3/prod/large/4c216868e50e425e93ce3d0c724589ab/63568cee53234e4254afe13165c811a2",
+                    "availableQty": 5,
                     "price": 45.0,
-                    "locationurl":"https://s3.amazonaws.com/clarifai-api/img3/prod/large/4c216868e50e425e93ce3d0c724589ab/63568cee53234e4254afe13165c811a2",
+                    "promotion": 10,
+                    "coupons": "HAPPY",
                     "imgurl": "https://s3.amazonaws.com/clarifai-api/img3/prod/small/4c216868e50e425e93ce3d0c724589ab/4ef09b8e56a4836a052f33346f3880a1"
                 }
             ],
@@ -45,7 +52,8 @@
                     "Brand": "Hermes",
                     "location": "Rack F2",
                     "price": 39.0,
-                    "locationurl":"https://s3.amazonaws.com/clarifai-api/img3/prod/large/4c216868e50e425e93ce3d0c724589ab/63568cee53234e4254afe13165c811a2",
+                    "promotion": 30,
+                    "coupons": "NEW",
                     "imgurl": "https://s3.amazonaws.com/clarifai-api/img3/prod/small/4c216868e50e425e93ce3d0c724589ab/803d4b7ff05184e8577a30fb36181495"
                 },
                 {
@@ -55,7 +63,8 @@
                     "Brand": "Hermes",
                     "location": "Rack F2",
                     "price": 37.0,
-                    "locationurl":"https://s3.amazonaws.com/clarifai-api/img3/prod/large/4c216868e50e425e93ce3d0c724589ab/63568cee53234e4254afe13165c811a2",
+                    "promotion": 25,
+                    "coupons": "NEW",
                     "imgurl": "https://s3.amazonaws.com/clarifai-api/img3/prod/small/4c216868e50e425e93ce3d0c724589ab/c0edc9a02746ab0633b9f5510d082e68"
                 }
             ]
