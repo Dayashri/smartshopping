@@ -8,9 +8,12 @@ import App from './App';
 import PageNotFound from './components/PageNotFound';
 import CaptureImage from './components/CaptureImage';
 import ProductDisp from './components/ProductDisp';
+import AppNavBar from "./components/AppNavbar";
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<div className="Site container-fluid">
+ReactDOM.render(
+    <React.Fragment><AppNavBar/>
+    <div className="Site container-fluid">
     <div className="Site-content">
         <Router>
             <div>
@@ -26,7 +29,9 @@ ReactDOM.render(<div className="Site container-fluid">
     <footer className="Footer">
         <div>Copyright &copy; {moment().format('YYYY')} Infosys Limited.</div>
     </footer>
-</div>, document.getElementById('root'));
+</div>
+    </React.Fragment>
+    , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
