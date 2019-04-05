@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Navbar,NavbarBrand,Container} from 'reactstrap';
-import logo from '../smartShopLogo.png'
 
 class AppNavbar extends Component {
 
@@ -8,7 +7,7 @@ class AppNavbar extends Component {
     return (
       <div>
         <Navbar expand="sm" className="mb-3" style={{'background':'#3f51b5'}}>
-            <NavbarBrand className="brand" style={{'color':'#fff',fontSize:"28px"}}>iSmart Instore Shopping</NavbarBrand>
+            <NavbarBrand className="brand" style={{'color':'#fff',fontSize:"28px"}}>iSmart InstoreShopping</NavbarBrand>
         </Navbar>
       </div>
     );
