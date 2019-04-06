@@ -34,21 +34,41 @@ class CaptureImage extends Component {
                 console.log("response for search")
                 var concepts = response['outputs'][0]['data']['concepts']
                 console.log(concepts[0].id);
-                axios.get("http://localhost:8080/modeldetails/" + concepts[0].id).then(resp => {
-                    this.props.history.push({
-                    pathname: '/product',
-                    state: { data: resp.data[0]}})
-                });
-                // axios.get("http://localhost:3001/products?modelid=" + concepts[0].id).then(resp => {
-                //     console.log(resp.data);
-                //     this.props.history.push({
-                //         pathname: '/product',
-                //         state: { 
-                //             data: resp.data[0],
-                //             msg:null
-                //          }
-                //     })
-                // });
+                console.log(concepts[0]);
+                if (concepts[0].value >= 0.7) {
+                    axios.get("http://localhost:8080/modeldetails/" + concepts[0].id).then(resp => {
+                        this.props.history.push({
+                            pathname: '/product',
+                            state: {
+                                data: resp.data[0],
+                                msg: null,
+                                customerid: this.props.location.state.customerid,
+                            }
+                        })
+                    });
+                } else {
+                    axios.get("http://localhost:8080/modeldetails/" + concepts[0].id).then(resp => {
+                        this.props.history.push({
+                            pathname: '/product',
+                            state: {
+                                data: resp.data[0],
+                                customerid: this.props.location.state.customerid,
+                                msg: "Sorry! Your requested product is not available at our Store"
+                            }
+                        })
+                    });
+                    // axios.get("http://localhost:3001/products?modelid=" + "bag1").then(resp => {
+                    //     console.log(resp.data);
+                    //     this.props.history.push({
+                    //         pathname: '/product',
+                    //         state: {
+                    //             customerid: this.props.location.state.customerid,
+                    //             data: resp.data[0],
+                    //             msg: "Sorry! Your requested product is not available at our Store.Please visit our website"
+                    //         }
+                    //     })
+                    // });
+                }
 
             });
 

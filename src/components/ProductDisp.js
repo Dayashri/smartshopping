@@ -33,21 +33,35 @@ class ProductDisp extends Component {
     this.setState({ orderModal: false });
   };
 
+  goBacktoCapture = () => {
+    this.props.history.push({
+      pathname: '/captureProduct',
+      state: {
+        customerid: this.props.location.state.customerid,
+      }
+    })
+  }
+
   render() {
     var settings = {
       dots: true,
       autoplay: true,
-      adaptiveHeight: true
     };
     return (
       <div style={{ marginTop: "1%" }}>
         <React.Fragment>
+          <div >
+            <Button color="info" style={{ fontSize: "23px" }} onClick={this.goBacktoCapture}><i className="glyphicon glyphicon-camera"></i>&nbsp;Start a new Search</Button>
+            <br />
+            <br />
+          </div>
           <i className="glyphicon glyphicon-home" style={{ color: "blue" }}></i> <span style={{ color: "blue" }}>Store: </span><span style={{ fontSize: "16px" }}>45485 Miramar Way, California, MD 20619, USA</span>
           <hr />
         </React.Fragment>
-        {(this.props.location.state.msg === undefined ||
-          this.props.location.state.msg === null ||
-          this.props.location.state.msg.length === 0) && (
+        {
+          (this.props.location.state.msg === undefined ||
+            this.props.location.state.msg === null ||
+            this.props.location.state.msg.length === 0) && (
             <React.Fragment>
               <Container className="prodConstainer">
                 <Row className="justify-content-center">
@@ -89,7 +103,7 @@ class ProductDisp extends Component {
                                 <CardText style={{ textAlign: "left", fontWeight: "bold" }}>
                                   <Button color="info" onClick={this.onOpenOrderModal}>Place order and Pickup Later</Button>
                                   <Modal open={this.state.orderModal} onClose={this.onCloseOrderModal} showCloseIcon={false} center>
-                                    Your Order has been Placed.You will be notified via your register Mobile number
+                                    Your Order has been Placed.You will be notified via your registered Mobile number
                                   </Modal>
                                 </CardText>
 
@@ -103,18 +117,22 @@ class ProductDisp extends Component {
               </Container>
 
             </React.Fragment>
-          )}
+          )
+        }
 
-        {this.props.location.state.msg !== undefined &&
+        {
+          this.props.location.state.msg !== undefined &&
           this.props.location.state.msg !== null &&
           this.props.location.state.msg.length !== 0 && (
             <React.Fragment>
-              Sorry! {this.props.location.state.msg}
+              <div style={{ textAlign: "center", fontWeight: "bold", color: "red" }}>
+                <h3>{this.props.location.state.msg}</h3></div>
             </React.Fragment>
-          )}
+          )
+        }
         <br />
-        <Container>
-          <h3 style={{ fontWeight: "bold" }}>Some Recommended Product for you!</h3>
+        <Container className="recoConstainer">
+          <h3 style={{ fontWeight: "bold" }}>Some Recommended Product/s for you!</h3>
           <Container>
 
 
@@ -153,7 +171,7 @@ class ProductDisp extends Component {
         </Container>
 
 
-      </div>
+      </div >
     )
   }
 }

@@ -27,12 +27,12 @@ export default class LoginForm extends React.Component {
       >
         <AvField
           name="customerId"
-          label="Customer Id"
+          label="Customer Id/Mobile Number"
           type="text"
           validate={{
             required: true,
           }}
-          errorMessage="Please enter the customerId!"
+          errorMessage="Please enter the customerId/Mobile Number!"
         />
 
         <Button id="submit" color="success">Submit</Button>

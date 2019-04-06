@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Container, Row, Col, Jumbotron, Card, CardBody } from "reactstrap";
 import LoginForm from "./components/LoginForm.jsx";
 import './App.css';
+import scenarioImg from './assets/icons.jpg';
+import cartImg from './assets/Cart.jpg';
 
 class App extends Component {
   constructor(props) {
@@ -13,12 +15,12 @@ class App extends Component {
 
 
   toCapture(customerid) {
-      this.props.history.push({
-        pathname: '/captureProduct',
-        state: {
-          name: customerid
-        }
-      })
+    this.props.history.push({
+      pathname: '/captureProduct',
+      state: {
+        customerid: customerid
+      }
+    })
   }
 
   render() {
@@ -26,7 +28,10 @@ class App extends Component {
       <Container className="App">
         <Container style={{ margin: "0 auto" }}>
           <Row>
-            <Col lg="2" />
+            {/* <Col lg="2">
+            <img className="img-responsive" src={cartImg}/>
+            </Col> */}
+            <Col lg="2"/>
             <Col lg="8">
               <Jumbotron>
                 <h3>
@@ -40,7 +45,12 @@ class App extends Component {
                 </Card>
               </Jumbotron>
             </Col>
-            <Col lg="2" />
+            {/* <Col lg="2">
+              <img className="img-responsive" src={scenarioImg}/>
+            </Col> */}
+            <Col lg="2"/>
+          </Row>
+          <Row>
           </Row>
         </Container>
       </Container>

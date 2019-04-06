@@ -17,6 +17,13 @@
     border-color: #ece2e2;
 }
 
+.recoConstainer{
+    border-radius: 1em;
+    border: 2px solid;
+    border-color: #ece2e2;
+    background-color: lightgoldenrodyellow;
+}
+
 @media (min-width: 1200px){
 .prodConstainer {
     width: 80vw;
