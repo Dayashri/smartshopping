@@ -38,12 +38,18 @@ class CaptureImage extends Component {
                 if (concepts[0].value >= 0.007) {
                     console.log('dsd')
                     axios.get("http://localhost:8080/modeldetails/" + concepts[0].id).then(prodResp => {
-                        axios.get("http://localhost:8080/modeldetails/" + concepts[0].id).then(resp => {
+                        axios.get("http://localhost:8080/mostviewed").then(resp => {
+							console.log(resp.data);
+							console.log(prodResp.data);
+							var recoitems=[];
+							for (var i=0; i < resp.data.length; i++) {
+        recoitems.push(resp.data[i].similaritems[0]);
+    } 
                             this.props.history.push({
                                 pathname: '/product',
                                 state: {
                                     data: prodResp.data[0],
-                                    recoitems: resp.data[0],
+                                    recoitems: recoitems,
                                     customerid: this.props.location.state.customerid,
                                     msg: null
                                 }
@@ -63,12 +69,16 @@ class CaptureImage extends Component {
                     // });
                 } else {
                     axios.get("http://localhost:8080/modeldetails/" + concepts[0].id).then(prodData => {
-                        axios.get("http://localhost:8080/modeldetails/" + concepts[0].id).then(resp => {
+                        axios.get("http://localhost:8080/mostviewed").then(resp => {
+							var recoitems=[];
+							for (var i=0; i < resp.data.length; i++) {
+        recoitems.push(resp.data[i].similaritems[0]);
+    } 
                             this.props.history.push({
                                 pathname: '/product',
                                 state: {
                                     data: prodData.data[0],
-                                    recoitems: resp.data[0],
+                                    recoitems: recoitems,
                                     customerid: this.props.location.state.customerid,
                                     msg: "Sorry! Your requested product is not available at our Store"
                                 }
