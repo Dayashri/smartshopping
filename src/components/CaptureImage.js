@@ -11,7 +11,7 @@ const Clarifai = require('clarifai');
 
 class CaptureImage extends Component {
     clarifai = new Clarifai.App({
-        apiKey: 'e1dffa6aaaad4e60ae9a629696015026'
+        apiKey: '42aac133db3c487e924be1f6fd636663'
     })
     constructor(props) {
         super(props);
@@ -25,7 +25,7 @@ class CaptureImage extends Component {
     onTakePhoto(dataUri) {
         // Do stuff with the dataUri photo...
         console.log('tookPhoto');
-        this.clarifai.models.initModel({ id: "storeinventory", version: "8a96b0aee6184e74ae42fdddb878f489" })
+        this.clarifai.models.initModel({ id: "bags", version: "6d9afa75692942be94de8e23bcc3a754" })
             .then(productModel => {
                 console.log("model found");
                 return productModel.predict({ base64: dataUri.substr(22, dataUri.length) });
@@ -35,7 +35,8 @@ class CaptureImage extends Component {
                 var concepts = response['outputs'][0]['data']['concepts']
                 console.log(concepts[0].id);
                 console.log(concepts[0]);
-                if (concepts[0].value >= 0.7) {
+                if (concepts[0].value >= 0.70) {
+                    console.log('dsd')
                     axios.get("http://localhost:8080/modeldetails/" + concepts[0].id).then(resp => {
                         this.props.history.push({
                             pathname: '/product',
@@ -46,6 +47,18 @@ class CaptureImage extends Component {
                             }
                         })
                     });
+                    // console.log(this.props.location.state.data.similaritems);
+                    // axios.get("http://localhost:3001/products?modelid=bag1").then(resp => {
+                    //     console.log(resp.data);
+                    //     this.props.history.push({
+                    //         pathname: '/product',
+                    //         state: {
+                    //             // customerid: this.props.location.state.cust?omerid,
+                    //             data: resp.data[0],
+                    //             msg: null,
+                    //         }
+                    //     })
+                    // });
                 } else {
                     axios.get("http://localhost:8080/modeldetails/" + concepts[0].id).then(resp => {
                         this.props.history.push({
@@ -57,12 +70,12 @@ class CaptureImage extends Component {
                             }
                         })
                     });
+                    // console.log(this.props.location.state.data.similaritems);
                     // axios.get("http://localhost:3001/products?modelid=" + "bag1").then(resp => {
-                    //     console.log(resp.data);
                     //     this.props.history.push({
                     //         pathname: '/product',
                     //         state: {
-                    //             customerid: this.props.location.state.customerid,
+                    //             // customerid: this.props.location.state.customerid,
                     //             data: resp.data[0],
                     //             msg: "Sorry! Your requested product is not available at our Store.Please visit our website"
                     //         }
