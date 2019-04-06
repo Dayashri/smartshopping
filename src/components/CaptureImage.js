@@ -35,19 +35,21 @@ class CaptureImage extends Component {
                 var concepts = response['outputs'][0]['data']['concepts']
                 console.log(concepts[0].id);
                 console.log(concepts[0]);
-                if (concepts[0].value >= 0.70) {
+                if (concepts[0].value >= 0.007) {
                     console.log('dsd')
-                    axios.get("http://localhost:8080/modeldetails/" + concepts[0].id).then(resp => {
-                        this.props.history.push({
-                            pathname: '/product',
-                            state: {
-                                data: resp.data[0],
-                                msg: null,
-                                customerid: this.props.location.state.customerid,
-                            }
-                        })
+                    axios.get("http://localhost:8080/modeldetails/" + concepts[0].id).then(prodResp => {
+                        axios.get("http://localhost:8080/modeldetails/" + concepts[0].id).then(resp => {
+                            this.props.history.push({
+                                pathname: '/product',
+                                state: {
+                                    data: prodResp.data[0],
+                                    recoitems: resp.data[0],
+                                    customerid: this.props.location.state.customerid,
+                                    msg: null
+                                }
+                            })
+                        });
                     });
-                    // console.log(this.props.location.state.data.similaritems);
                     // axios.get("http://localhost:3001/products?modelid=bag1").then(resp => {
                     //     console.log(resp.data);
                     //     this.props.history.push({
@@ -60,15 +62,20 @@ class CaptureImage extends Component {
                     //     })
                     // });
                 } else {
-                    axios.get("http://localhost:8080/modeldetails/" + concepts[0].id).then(resp => {
-                        this.props.history.push({
-                            pathname: '/product',
-                            state: {
-                                data: resp.data[0],
-                                customerid: this.props.location.state.customerid,
-                                msg: "Sorry! Your requested product is not available at our Store"
-                            }
-                        })
+                    axios.get("http://localhost:8080/modeldetails/" + concepts[0].id).then(prodData => {
+                        axios.get("http://localhost:8080/modeldetails/" + concepts[0].id).then(resp => {
+                            this.props.history.push({
+                                pathname: '/product',
+                                state: {
+                                    data: prodData.data[0],
+                                    recoitems: resp.data[0],
+                                    customerid: this.props.location.state.customerid,
+                                    msg: "Sorry! Your requested product is not available at our Store"
+                                }
+                            })
+                        });
+
+
                     });
                     // console.log(this.props.location.state.data.similaritems);
                     // axios.get("http://localhost:3001/products?modelid=" + "bag1").then(resp => {

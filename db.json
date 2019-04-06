@@ -15,17 +15,17 @@
                     "locationurl": "https://s3.amazonaws.com/clarifai-api/img3/prod/large/4c216868e50e425e93ce3d0c724589ab/63568cee53234e4254afe13165c811a2",
                     "availablity": [
                         {
-                            "store": "45485 California, MD",
+                            "store": "4196",
                             "qty": 2,
                             "price":50.0
                         },
                         {
-                            "store": "777 San Jose, CA",
+                            "store": "4109",
                             "qty": 2,
                             "price": 45.0
                         },
                         {
-                            "store": "5095 , San Jose, CA",
+                            "store": "4721",
                             "qty": 15,
                             "price": 48.75
                         }

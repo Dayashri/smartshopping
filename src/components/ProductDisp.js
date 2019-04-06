@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardText, CardBody, Container, Row, Col, CardTitle, CardSubtitle, CardLink, Button } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, Container, Row, Col, CardTitle, CardSubtitle, CardLink, Button, Table } from 'reactstrap';
 import Slider from "react-slick";
 import './product.css';
 import Modal from 'react-responsive-modal';
@@ -9,7 +9,8 @@ class ProductDisp extends Component {
     super(props);
     this.state = {
       openLocationModal: false,
-      orderModal: false
+      orderModal: false,
+      openCompareModal:false
     }
   }
 
@@ -32,6 +33,14 @@ class ProductDisp extends Component {
   onCloseOrderModal = () => {
     this.setState({ orderModal: false });
   };
+
+  onStoreCompare = () => {
+    this.setState({ openCompareModal: true });
+  }
+
+  onCloseCompareModal =()=>{
+    this.setState({ openCompareModal: false });
+  }
 
   goBacktoCapture = () => {
     this.props.history.push({
@@ -109,7 +118,7 @@ class ProductDisp extends Component {
 
                               </React.Fragment>
                             )}
-                            {item.availablity.map((storeDet, storeDetIndex) => (
+                            {/* {item.availablity.map((storeDet, storeDetIndex) => (
                               <React.Fragment key={storeDetIndex}>
                                 {storeDetIndex !== 0 && (
                                   <CardText>{storeDet.qty + ' available for ' + storeDet.price + ' at ' + storeDet.store}</CardText>
@@ -118,72 +127,96 @@ class ProductDisp extends Component {
                                   <CardText/>
                                 )}
                               </React.Fragment>
-                              ))}
+                              ))} */}
+                            <Button color="info" onClick={this.onStoreCompare}>Price Compare</Button>
+                            <Modal open={this.state.openCompareModal}
+                              onClose={this.onCloseCompareModal} center>
+                              <br />
+                              <Table striped bordered hover  size="sm" responsive className="compareTable">
+                                <thead>
+                                  <tr>
+                                    <th>Store</th>
+                                    <th>Price</th>
+                                    <th>Qty</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {item.availablity.map((storeDet, storeDetIndex) => (
+                                    <tr key={"compare" + storeDetIndex}>
+                                      <td>{storeDet.store}</td>
+                                      <td>$ {storeDet.price}</td>
+                                      <td>{storeDet.qty}</td>
+                                    </tr>
+                                  )
+                                  )}
+                                </tbody>
+                              </Table>
+                            </Modal>
                           </CardBody>
                         </Card>
                       </Col>)}
-    
+
                 </Row>
               </Container>
 
             </React.Fragment>
-                )
-              }
-      
+          )
+        }
+
         {
-                    this.props.location.state.msg !== undefined &&
-                    this.props.location.state.msg !== null &&
-                    this.props.location.state.msg.length !== 0 && (
-                      <React.Fragment>
-                        <div style={{ textAlign: "center", fontWeight: "bold", color: "red" }}>
-                          <h3>{this.props.location.state.msg}</h3></div>
-                      </React.Fragment>
-                    )
-                  }
-                  <br />
-                  <Container className="recoConstainer">
-                    <h3 style={{ fontWeight: "bold" }}>Some Recommended Product/s for you!</h3>
-                    <Container>
+          this.props.location.state.msg !== undefined &&
+          this.props.location.state.msg !== null &&
+          this.props.location.state.msg.length !== 0 && (
+            <React.Fragment>
+              <div style={{ textAlign: "center", fontWeight: "bold", color: "red" }}>
+                <h3>{this.props.location.state.msg}</h3></div>
+            </React.Fragment>
+          )
+        }
+        <br />
+        <Container className="recoConstainer">
+          <h3 style={{ fontWeight: "bold" }}>Most Popular products for you</h3>
+          <Container>
 
 
-                      <Slider {...settings}>
-                        {this.props.location.state.data.recoitems.map((item, index) =>
-                          <div key={"recommended" + index}>
-                            <Row className="justify-content-center" >
-                              <Col xs="6" sm="6" md="6" lg="6" xl="6">
-                                <Card body className="text-center" style={{ border: "1px solid white" }}>
-                                  <CardBody>
-                                    <br />
-                                    <CardTitle>{item.Brand + "  " + item.productname}</CardTitle>
-                                    <br />
-                                    <CardSubtitle style={{ color: "orange", fontWeight: "bold" }}>Price : ${item.price}.00</CardSubtitle>
-                                    <CardText>Color : {item.color}</CardText>
-                                    <CardSubtitle style={{ color: "blue", fontWeight: "bold" }}>Use {item.coupons} and avail {item.promotion} % OFF</CardSubtitle>
-                                    <CardSubtitle style={{ color: "blue", fontWeight: "bold" }}>{item.offer}</CardSubtitle>
+            <Slider {...settings}>
+              {this.props.location.state.recoitems.map((item, index) =>
+                <div key={"recommended" + index}>
+                  <Row className="justify-content-center" >
+                    <Col xs="6" sm="6" md="6" lg="6" xl="6">
+                      <Card body className="text-center" style={{ border: "1px solid white" }}>
+                        <CardBody>
+                          <br />
+                          <CardTitle>{item.Brand + "  " + item.productname}</CardTitle>
+                          <br />
+                          <CardSubtitle style={{ color: "orange", fontWeight: "bold" }}>Price : ${item.availablity[0].price}.00</CardSubtitle>
+                          <CardText>Color : {item.color}</CardText>
+                          <CardSubtitle style={{ color: "blue", fontWeight: "bold" }}>Use {item.coupons} and avail {item.promotion} % OFF</CardSubtitle>
+                          <CardSubtitle style={{ color: "blue", fontWeight: "bold" }}>{item.offer}</CardSubtitle>
 
-                                  </CardBody>
-                                </Card>
-                              </Col>
-                              <Col xs="6" sm="6" md="6" lg="6" xl="6">
-                                <Card body className="text-center" style={{ border: "1px solid white" }}>
-                                  <CardImg top
-                                    src={item.imgurl}
-                                    className="img-responsive"
-                                    alt={item.Brand + "  " + item.productname} />
-                                </Card>
-                              </Col>
-                            </Row>
+                        </CardBody>
+                      </Card>
+                    </Col>
+                    <Col xs="6" sm="6" md="6" lg="6" xl="6">
+                      <Card body className="text-center" style={{ border: "1px solid white" }}>
+                        <CardImg top
+                          src={item.imgurl}
+                          className="img-responsive"
+                          alt={item.Brand + "  " + item.productname} />
+                      </Card>
+                    </Col>
+                  </Row>
 
-                          </div>)
-                        }
-                      </Slider>
-                    </Container>
-                  </Container>
+                </div>)
+              }
+            </Slider>
+          </Container>
+        </Container>
 
 
       </div >
-                )
-              }
-            }
-            
-            export default ProductDisp;
+    )
+  }
+}
+
+export default ProductDisp;
