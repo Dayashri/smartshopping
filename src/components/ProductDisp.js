@@ -175,7 +175,7 @@ class ProductDisp extends Component {
         }
         <br />
         <Container className="recoConstainer">
-          <h3 style={{ fontWeight: "bold" }}>Most Popular products for you</h3>
+          <h3 style={{ fontWeight: "bold" }}>Most viewed products for you</h3>
           <Container>
 
 
